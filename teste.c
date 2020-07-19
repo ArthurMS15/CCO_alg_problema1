@@ -1,15 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(){
-
-    int colunamax;
-    printf("(n inteiro) Insira a dimensao x (coluna) da matriz que passara pela convolucao:\n");
-    scanf("%i", &colunamax);
-
+int EscolhaLinhaMax(){
     int linhamax;
     printf("(n inteiro) Insira a dimensao y (linha) da matriz que passara pela convolucao:\n");
     scanf("%i", &linhamax);
+    return linhamax;
+}
+
+int EscolhaColunaMax(){
+    int colunamax;
+    printf("(n inteiro) Insira a dimensao x (coluna) da matriz que passara pela convolucao:\n");
+    scanf("%i", &colunamax);
+    return colunamax;
+}
+
+int main(){
+
+    int linhamax=EscolhaLinhaMax();
+    int colunamax=EscolhaColunaMax();
 
     int matriz[linhamax][colunamax];
     int matrizaux[linhamax][colunamax];
