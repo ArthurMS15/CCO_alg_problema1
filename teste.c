@@ -8,10 +8,11 @@ int main(){
     scanf("%i", &colunamax);
 
     int linhamax;
-    printf("(n inteiro) Insira a dimensao y (linhas) da matriz que passara pela convolucao:\n");
+    printf("(n inteiro) Insira a dimensao y (linha) da matriz que passara pela convolucao:\n");
     scanf("%i", &linhamax);
 
     int matriz[linhamax][colunamax];
+    int matrizaux[linhamax][colunamax];
 
     for(int l=0;l<linhamax;l++){
         for(int c=0;c<colunamax;c++){
@@ -43,13 +44,27 @@ int main(){
         case 1:
             for(int l=0;l<linhamax;l++){
                 for(int c=0;c<colunamax;c++){
-                    if(l==0 || c==0){
-                        matriz[l][c]=0;
+                    if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
+                        printf("\t");
                     }
                     else{
-                        matriz[l][c]=((matriz[l-1][c-1]*0)+(matriz[l-1][c]*0)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*-1)+(matriz[l][c]*1)+(matriz[l][c+1]*0)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*0)+(matriz[l+1][c+1]*0));
+                        matrizaux[l][c]=((matriz[l-1][c-1]*0)+(matriz[l-1][c]*0)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*-1)+(matriz[l][c]*1)+(matriz[l][c+1]*0)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*0)+(matriz[l+1][c+1]*0));
+                        printf("%i\t", matrizaux[l][c]);
                     }
-                    printf("%i\t", matriz[l][c]);
+                }
+            printf("\n");
+            }
+            break;
+        case 2:
+            for(int l=0;l<linhamax;l++){
+                for(int c=0;c<colunamax;c++){
+                    if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
+                        printf("\t");
+                    }
+                    else{
+                        matrizaux[l][c]=((matriz[l-1][c-1]*0)+(matriz[l-1][c]*1)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*1)+(matriz[l][c]*-4)+(matriz[l][c+1]*1)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*1)+(matriz[l+1][c+1]*0));
+                        printf("%i\t", matrizaux[l][c]);
+                    }
                 }
             printf("\n");
             }
