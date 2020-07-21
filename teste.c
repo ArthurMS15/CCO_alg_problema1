@@ -1,18 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int EscolhaLinhaMax(){
-    int linhamax;
+typedef struct{
+    int linha;
+    int coluna;
+} sDimensaoMatriz;
+
+int EscolhaLinhaMax(sDimensaoMatriz matriz1){
     printf("(n inteiro) Insira a dimensao y (linha) da matriz que passara pela convolucao:\n");
-    scanf("%i", &linhamax);
-    return linhamax;
+    scanf("%i", &matriz1.linha);
+    return matriz1.linha;
 }
 
-int EscolhaColunaMax(){
-    int colunamax;
+int EscolhaColunaMax(sDimensaoMatriz matriz1){
     printf("(n inteiro) Insira a dimensao x (coluna) da matriz que passara pela convolucao:\n");
-    scanf("%i", &colunamax);
-    return colunamax;
+    scanf("%i", &matriz1.coluna);
+    return matriz1.coluna;
 }
 
 int EscolhaKernel(){
@@ -37,11 +40,21 @@ void finalizarPrograma(){
 
 int main(){
 
-    int linhamax=EscolhaLinhaMax();
-    int colunamax=EscolhaColunaMax();
+    sDimensaoMatriz matriz1;
+    int linhamax=EscolhaLinhaMax(matriz1);
+    int colunamax=EscolhaColunaMax(matriz1);
 
-    int matriz[linhamax][colunamax];
-    int matrizaux[linhamax][colunamax];
+    int **matriz;
+    matriz=(int**) malloc(linhamax * sizeof(sizeof(int *)));
+    for(int l=0; l<linhamax;l++){
+        matriz[l]=(int*)malloc(colunamax * sizeof(int));
+    }
+
+    int **matrizaux;
+    matrizaux=(int**) malloc(linhamax * sizeof(sizeof(int *)));
+    for(int l=0; l<linhamax;l++){
+        matrizaux[l]=(int*)malloc(colunamax * sizeof(int));
+    }
 
     for(int l=0;l<linhamax;l++){
         for(int c=0;c<colunamax;c++){
