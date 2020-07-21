@@ -18,6 +18,25 @@ int EscolhaColunaMax(sDimensaoMatriz matriz1){
     return matriz1.coluna;
 }
 
+int** CriarMatriz(int linhamax, int colunamax){
+    int **m;
+    m=(int**) malloc(linhamax * sizeof(sizeof(int *)));
+    for(int l=0; l<linhamax;l++){
+        m[l]=(int*)malloc(colunamax * sizeof(int));
+    }
+    return m;
+}
+
+int** CriarMatrizAuxiliar(int linhamax, int colunamax){
+    int **maux;
+    maux=(int**) malloc(linhamax * sizeof(sizeof(int *)));
+    for(int l=0; l<linhamax;l++){
+        maux[l]=(int*)malloc(colunamax * sizeof(int));
+    }
+    return maux;
+}
+
+
 int EscolhaKernel(){
     int var;
     printf("\nMatrizes para a convolucao:\n");
@@ -45,16 +64,9 @@ int main(){
     int colunamax=EscolhaColunaMax(matriz1);
 
     int **matriz;
-    matriz=(int**) malloc(linhamax * sizeof(sizeof(int *)));
-    for(int l=0; l<linhamax;l++){
-        matriz[l]=(int*)malloc(colunamax * sizeof(int));
-    }
-
+    matriz=CriarMatriz(linhamax, colunamax);
     int **matrizaux;
-    matrizaux=(int**) malloc(linhamax * sizeof(sizeof(int *)));
-    for(int l=0; l<linhamax;l++){
-        matrizaux[l]=(int*)malloc(colunamax * sizeof(int));
-    }
+    matrizaux=CriarMatrizAuxiliar(linhamax, colunamax);
 
     for(int l=0;l<linhamax;l++){
         for(int c=0;c<colunamax;c++){
