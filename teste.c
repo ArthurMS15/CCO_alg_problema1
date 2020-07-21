@@ -52,6 +52,24 @@ int EscolhaKernel(){
     return var;
 }
 
+void EscolhaValoresDentroMatriz(int linhamax, int colunamax, int **matriz){
+    for(int l=0;l<linhamax;l++){
+        for(int c=0;c<colunamax;c++){
+            printf("Digite os valores para matriz[%i][%i]\n", l, c);
+            scanf("%i", &matriz[l][c]);
+        }
+    }
+}
+
+void EscreverValoresDentroMatriz(int linhamax, int colunamax, int **matriz){
+    for(int l=0;l<linhamax;l++){
+        for(int c=0;c<colunamax;c++){
+            printf("%i\t", matriz[l][c]);
+        }
+        printf("\n");
+    }
+}
+
 void finalizarPrograma(){
     printf("PROGRAMA FINALIZADO\n");
     return 0;
@@ -68,21 +86,9 @@ int main(){
     int **matrizaux;
     matrizaux=CriarMatrizAuxiliar(linhamax, colunamax);
 
-    for(int l=0;l<linhamax;l++){
-        for(int c=0;c<colunamax;c++){
-            printf("Digite os valores para matriz[%i][%i]\n", l, c);
-            scanf("%i", &matriz[l][c]);
-        }
-    }
-
-    printf("\n");
-    for(int l=0;l<linhamax;l++){
-        for(int c=0;c<colunamax;c++){
-            printf("%i\t", matriz[l][c]);
-        }
-        printf("\n");
-    }
-
+    EscolhaValoresDentroMatriz(linhamax, colunamax, matriz);
+    EscreverValoresDentroMatriz(linhamax, colunamax, matriz);
+    
     switch(EscolhaKernel()){
         case 1:
             for(int l=0;l<linhamax;l++){
