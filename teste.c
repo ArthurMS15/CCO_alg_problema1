@@ -6,6 +6,65 @@ typedef struct{
     int coluna;
 } sDimensaoMatriz;
 
+int EscolhaLinhaMax(sDimensaoMatriz matriz1);
+int EscolhaColunaMax(sDimensaoMatriz matriz1);
+int** CriarMatriz(int linhamax, int colunamax);
+int** CriarMatrizAuxiliar(int linhamax, int colunamax);
+int EscolhaKernel();
+void EscolhaValoresDentroMatriz(linhamax, colunamax, matriz);
+void EscreverValoresDentroMatriz(linhamax, colunamax, matriz);
+void KernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux);
+void KernelCaso2(int linhamax, int colunamax, int **matriz, int **matrizaux);
+void KernelCaso3(int linhamax, int colunamax, int **matriz, int **matrizaux);
+void KernelCaso4(int linhamax, int colunamax, int **matriz, int **matrizaux);
+void KernelCaso5(int linhamax, int colunamax, int **matriz, int **matrizaux);
+void KernelCaso6(int linhamax, int colunamax, int **matriz, int **matrizaux);
+void KernelCaso7(int linhamax, int colunamax, int **matriz, int **matrizaux);
+void FinalizarPrograma();
+
+int main(){
+
+    sDimensaoMatriz matriz1;
+    int linhamax=EscolhaLinhaMax(matriz1);
+    int colunamax=EscolhaColunaMax(matriz1);
+
+    int **matriz;
+    matriz=CriarMatriz(linhamax, colunamax);
+    int **matrizaux;
+    matrizaux=CriarMatrizAuxiliar(linhamax, colunamax);
+
+    EscolhaValoresDentroMatriz(linhamax, colunamax, matriz);
+    EscreverValoresDentroMatriz(linhamax, colunamax, matriz);
+    
+    switch(EscolhaKernel()){
+        case 1:
+            KernelCaso1(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 2:
+            KernelCaso2(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 3:
+            KernelCaso3(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 4:
+            KernelCaso4(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 5:
+            KernelCaso5(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 6:
+            KernelCaso6(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 7:
+            KernelCaso7(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 0:
+            FinalizarPrograma();
+            break;
+    }
+    return 0;
+}
+
 int EscolhaLinhaMax(sDimensaoMatriz matriz1){
     printf("(n inteiro) Insira a dimensao y (linha) da matriz que passara pela convolucao:\n");
     scanf("%i", &matriz1.linha);
@@ -24,6 +83,9 @@ int** CriarMatriz(int linhamax, int colunamax){
     for(int l=0; l<linhamax;l++){
         m[l]=(int*)malloc(colunamax * sizeof(int));
     }
+    if (m == NULL){
+        printf("Erro ao alocar memoria!\n");
+    }
     return m;
 }
 
@@ -33,9 +95,11 @@ int** CriarMatrizAuxiliar(int linhamax, int colunamax){
     for(int l=0; l<linhamax;l++){
         maux[l]=(int*)malloc(colunamax * sizeof(int));
     }
+    if (maux == NULL){
+        printf("Erro ao alocar memoria!\n");
+    }
     return maux;
 }
-
 
 int EscolhaKernel(){
     int var;
@@ -175,50 +239,7 @@ void KernelCaso7(int linhamax, int colunamax, int **matriz, int **matrizaux){
     }
 }
 
-void finalizarPrograma(){
+void FinalizarPrograma(){
     printf("PROGRAMA FINALIZADO\n");
-    return 0;
-}
-
-int main(){
-
-    sDimensaoMatriz matriz1;
-    int linhamax=EscolhaLinhaMax(matriz1);
-    int colunamax=EscolhaColunaMax(matriz1);
-
-    int **matriz;
-    matriz=CriarMatriz(linhamax, colunamax);
-    int **matrizaux;
-    matrizaux=CriarMatrizAuxiliar(linhamax, colunamax);
-
-    EscolhaValoresDentroMatriz(linhamax, colunamax, matriz);
-    EscreverValoresDentroMatriz(linhamax, colunamax, matriz);
-    
-    switch(EscolhaKernel()){
-        case 1:
-            KernelCaso1(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 2:
-            KernelCaso2(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 3:
-            KernelCaso3(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 4:
-            KernelCaso4(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 5:
-            KernelCaso5(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 6:
-            KernelCaso6(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 7:
-            KernelCaso7(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 0:
-            finalizarPrograma();
-            break;
-    }
     return 0;
 }
