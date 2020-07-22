@@ -4,7 +4,7 @@
 typedef struct{
     int linha;
     int coluna;
-} sDimensaoMatriz;
+} sDimensaoMatriz; // *declaração do registro
 
 int EscolhaLinhaMax(sDimensaoMatriz matriz1);
 int EscolhaColunaMax(sDimensaoMatriz matriz1);
@@ -20,48 +20,24 @@ void KernelCaso4(int linhamax, int colunamax, int **matriz, int **matrizaux);
 void KernelCaso5(int linhamax, int colunamax, int **matriz, int **matrizaux);
 void KernelCaso6(int linhamax, int colunamax, int **matriz, int **matrizaux);
 void KernelCaso7(int linhamax, int colunamax, int **matriz, int **matrizaux);
-void FinalizarPrograma();
+void FinalizarPrograma(); // *modularização(procedimento e de ação), prototipação
 
 int main(){
 
     sDimensaoMatriz matriz1;
-    int linhamax=EscolhaLinhaMax(matriz1);
+    int linhamax=EscolhaLinhaMax(matriz1); // *uso do registro
     int colunamax=EscolhaColunaMax(matriz1);
 
-    int **matriz;
-    matriz=CriarMatriz(linhamax, colunamax);
-    int **matrizaux;
-    matrizaux=CriarMatrizAuxiliar(linhamax, colunamax);
+    int **matriz; // *uso de registro dentro de um registro
+    matriz=CriarMatriz(linhamax, colunamax); //alocação dinâmica de memória
+    int **matrizaux; 
+    matrizaux=CriarMatrizAuxiliar(linhamax, colunamax); 
 
-    EscolhaValoresDentroMatriz(linhamax, colunamax, matriz);
-    EscreverValoresDentroMatriz(linhamax, colunamax, matriz);
+    EscolhaValoresDentroMatriz(linhamax, colunamax, matriz); // *passagem de parâmetro por valor e referência
+    EscreverValoresDentroMatriz(linhamax, colunamax, matriz); 
     
-    switch(EscolhaKernel()){
-        case 1:
-            KernelCaso1(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 2:
-            KernelCaso2(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 3:
-            KernelCaso3(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 4:
-            KernelCaso4(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 5:
-            KernelCaso5(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 6:
-            KernelCaso6(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 7:
-            KernelCaso7(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 0:
-            FinalizarPrograma();
-            break;
-    }
+    ProcessoConvolucaoeEscolhaKernel(linhamax, colunamax, matriz, matrizaux);
+    DesalocaMatrizeMatrizaux(matriz, matrizaux);
     return 0;
 }
 
@@ -131,6 +107,35 @@ void EscreverValoresDentroMatriz(int linhamax, int colunamax, int **matriz){
             printf("%i\t", matriz[l][c]);
         }
         printf("\n");
+    }
+}
+
+void ProcessoConvolucaoeEscolhaKernel(int linhamax, int colunamax, int **matriz, int **matrizaux){
+    switch(EscolhaKernel()){
+        case 1:
+            KernelCaso1(linhamax, colunamax, matriz, matrizaux); // *passagem de parâmetro por valor e referência, elementos do registro
+            break;
+        case 2:
+            KernelCaso2(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 3:
+            KernelCaso3(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 4:
+            KernelCaso4(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 5:
+            KernelCaso5(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 6:
+            KernelCaso6(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 7:
+            KernelCaso7(linhamax, colunamax, matriz, matrizaux);
+            break;
+        case 0:
+            FinalizarPrograma();
+            break;
     }
 }
 
@@ -237,6 +242,14 @@ void KernelCaso7(int linhamax, int colunamax, int **matriz, int **matrizaux){
         }
         printf("\n");
     }
+}
+
+void DesalocaMatrizeMatrizaux(int **matriz, int **matrizaux){
+    printf("Desalocando memoria");
+    free(matriz);
+    free(matrizaux);
+    printf("PROGRAMA FINALIZADO\n");
+    return 0;
 }
 
 void FinalizarPrograma(){
