@@ -70,6 +70,111 @@ void EscreverValoresDentroMatriz(int linhamax, int colunamax, int **matriz){
     }
 }
 
+void KernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux){
+    for(int l=0;l<linhamax;l++){
+        for(int c=0;c<colunamax;c++){
+            if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
+                printf("\t");
+            }
+            else{
+                matrizaux[l][c]=((matriz[l-1][c-1]*0)+(matriz[l-1][c]*0)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*-1)+(matriz[l][c]*1)+(matriz[l][c+1]*0)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*0)+(matriz[l+1][c+1]*0));
+                printf("%i\t", matrizaux[l][c]);
+            }
+        }
+        printf("\n");
+    }
+}
+
+void KernelCaso2(int linhamax, int colunamax, int **matriz, int **matrizaux){ 
+    for(int l=0;l<linhamax;l++){
+        for(int c=0;c<colunamax;c++){
+            if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
+                printf("\t");
+            }
+            else{
+                matrizaux[l][c]=((matriz[l-1][c-1]*0)+(matriz[l-1][c]*1)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*1)+(matriz[l][c]*-4)+(matriz[l][c+1]*1)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*1)+(matriz[l+1][c+1]*0));
+                printf("%i\t", matrizaux[l][c]);
+            }
+        }
+        printf("\n");
+    }
+}
+
+void KernelCaso3(int linhamax, int colunamax, int **matriz, int **matrizaux){
+    for(int l=0;l<linhamax;l++){
+        for(int c=0;c<colunamax;c++){
+            if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
+                printf("\t");
+            }
+            else{
+                matrizaux[l][c]=((matriz[l-1][c-1]*-1)+(matriz[l-1][c]*-1)+(matriz[l-1][c+1]*-1)+(matriz[l][c-1]*-1)+(matriz[l][c]*8)+(matriz[l][c+1]*-1)+(matriz[l+1][c-1]*-1)+(matriz[l+1][c]*-1)+(matriz[l+1][c+1]*-1));
+                printf("%i\t", matrizaux[l][c]);
+            }
+        }
+        printf("\n");
+    }
+}
+
+void KernelCaso4(int linhamax, int colunamax, int **matriz, int **matrizaux){
+    for(int l=0;l<linhamax;l++){
+        for(int c=0;c<colunamax;c++){
+            if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
+                printf("\t");
+            }
+            else{
+                matrizaux[l][c]=((matriz[l-1][c-1]*-2)+(matriz[l-1][c]*-1)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*-1)+(matriz[l][c]*1)+(matriz[l][c+1]*1)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*1)+(matriz[l+1][c+1]*2));
+                printf("%i\t", matrizaux[l][c]);
+            }
+        }
+        printf("\n");
+    }
+}
+
+void KernelCaso5(int linhamax, int colunamax, int **matriz, int **matrizaux){
+    for(int l=0;l<linhamax;l++){
+        for(int c=0;c<colunamax;c++){
+            if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
+                printf("\t");
+            }
+            else{
+                matrizaux[l][c]=(matriz[l-1][c-1]*-1)+(matriz[l-1][c]*0)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*1)+(matriz[l][c]*0)+(matriz[l][c+1]*0)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*0)+(matriz[l+1][c+1]*0);
+                printf("%i\t", matrizaux[l][c]);
+            }
+        }
+        printf("\n");
+    }
+}
+
+void KernelCaso6(int linhamax, int colunamax, int **matriz, int **matrizaux){
+    for(int l=0;l<linhamax;l++){
+        for(int c=0;c<colunamax;c++){
+            if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
+                printf("\t");
+            }
+            else{
+                matrizaux[l][c]=(matriz[l-1][c-1]*-1)+(matriz[l-1][c]*0)+(matriz[l-1][c+1]*1)+(matriz[l][c-1]*-2)+(matriz[l][c]*0)+(matriz[l][c+1]*2)+(matriz[l+1][c-1]*-1)+(matriz[l+1][c]*0)+(matriz[l+1][c+1]*1);
+                printf("%i\t", matrizaux[l][c]);
+            }
+        }
+        printf("\n");
+    }
+}
+
+void KernelCaso7(int linhamax, int colunamax, int **matriz, int **matrizaux){
+    for(int l=0;l<linhamax;l++){
+        for(int c=0;c<colunamax;c++){
+            if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
+                printf("\t");
+            }
+            else{
+                matrizaux[l][c]=(matriz[l-2][c-2]*0)+(matriz[l-2][c-1]*0)+(matriz[l-2][c]*0)+(matriz[l-2][c+1]*0)+(matriz[l-2][c+2]*0)+(matriz[l-1][c-2]*0)+(matriz[l-1][c-1]*1)+(matriz[l-1][c]*1)+(matriz[l-1][c+1]*1)+(matriz[l-1][c+2]*0)+(matriz[l][c-2]*0)+(matriz[l][c+1]*1)+(matriz[l][c]*1)+(matriz[l][c+1]*1)+(matriz[l][c+2]*0)+(matriz[l+1][c-2]*0)+(matriz[l+1][c-1]*1)+(matriz[l+1][c]*1)+(matriz[l+1][c+1]*1)+(matriz[l+1][c+2]*0)+(matriz[l+2][c-2]*0)+(matriz[l+2][c-1]*0)+(matriz[l+2][c]*0)+(matriz[l+2][c+1]*0)+(matriz[l+2][c+2]*0);
+                printf("%i\t", matrizaux[l][c]);
+            }
+        }
+        printf("\n");
+    }
+}
+
 void finalizarPrograma(){
     printf("PROGRAMA FINALIZADO\n");
     return 0;
@@ -91,102 +196,25 @@ int main(){
     
     switch(EscolhaKernel()){
         case 1:
-            for(int l=0;l<linhamax;l++){
-                for(int c=0;c<colunamax;c++){
-                    if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
-                        printf("\t");
-                    }
-                    else{
-                        matrizaux[l][c]=((matriz[l-1][c-1]*0)+(matriz[l-1][c]*0)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*-1)+(matriz[l][c]*1)+(matriz[l][c+1]*0)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*0)+(matriz[l+1][c+1]*0));
-                        printf("%i\t", matrizaux[l][c]);
-                    }
-                }
-            printf("\n");
-            }
+            KernelCaso1(linhamax, colunamax, matriz, matrizaux);
             break;
         case 2:
-            for(int l=0;l<linhamax;l++){
-                for(int c=0;c<colunamax;c++){
-                    if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
-                        printf("\t");
-                    }
-                    else{
-                        matrizaux[l][c]=((matriz[l-1][c-1]*0)+(matriz[l-1][c]*1)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*1)+(matriz[l][c]*-4)+(matriz[l][c+1]*1)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*1)+(matriz[l+1][c+1]*0));
-                        printf("%i\t", matrizaux[l][c]);
-                    }
-                }
-            printf("\n");
-            }
+            KernelCaso2(linhamax, colunamax, matriz, matrizaux);
             break;
         case 3:
-            for(int l=0;l<linhamax;l++){
-                for(int c=0;c<colunamax;c++){
-                    if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
-                        printf("\t");
-                    }
-                    else{
-                        matrizaux[l][c]=((matriz[l-1][c-1]*-1)+(matriz[l-1][c]*-1)+(matriz[l-1][c+1]*-1)+(matriz[l][c-1]*-1)+(matriz[l][c]*8)+(matriz[l][c+1]*-1)+(matriz[l+1][c-1]*-1)+(matriz[l+1][c]*-1)+(matriz[l+1][c+1]*-1));
-                        printf("%i\t", matrizaux[l][c]);
-                    }
-                }
-            printf("\n");
-            }
+            KernelCaso3(linhamax, colunamax, matriz, matrizaux);
             break;
         case 4:
-            for(int l=0;l<linhamax;l++){
-                for(int c=0;c<colunamax;c++){
-                    if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
-                        printf("\t");
-                    }
-                    else{
-                        matrizaux[l][c]=((matriz[l-1][c-1]*-2)+(matriz[l-1][c]*-1)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*-1)+(matriz[l][c]*1)+(matriz[l][c+1]*1)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*1)+(matriz[l+1][c+1]*2));
-                        printf("%i\t", matrizaux[l][c]);
-                    }
-                }
-            printf("\n");
-            }
+            KernelCaso4(linhamax, colunamax, matriz, matrizaux);
             break;
         case 5:
-            for(int l=0;l<linhamax;l++){
-                for(int c=0;c<colunamax;c++){
-                    if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
-                        printf("\t");
-                    }
-                    else{
-                        matrizaux[l][c]=(matriz[l-1][c-1]*-1)+(matriz[l-1][c]*0)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*1)+(matriz[l][c]*0)+(matriz[l][c+1]*0)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*0)+(matriz[l+1][c+1]*0);
-                        printf("%i\t", matrizaux[l][c]);
-                    }
-                }
-            printf("\n");
-            }
+            KernelCaso5(linhamax, colunamax, matriz, matrizaux);
             break;
         case 6:
-            for(int l=0;l<linhamax;l++){
-                for(int c=0;c<colunamax;c++){
-                    if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
-                        printf("\t");
-                    }
-                    else{
-                        matrizaux[l][c]=(matriz[l-1][c-1]*-1)+(matriz[l-1][c]*0)+(matriz[l-1][c+1]*1)+(matriz[l][c-1]*-2)+(matriz[l][c]*0)+(matriz[l][c+1]*2)+(matriz[l+1][c-1]*-1)+(matriz[l+1][c]*0)+(matriz[l+1][c+1]*1);
-                        printf("%i\t", matrizaux[l][c]);
-                    }
-                }
-            printf("\n");
-            }
+            KernelCaso6(linhamax, colunamax, matriz, matrizaux);
             break;
         case 7:
-            for(int l=0;l<linhamax;l++){
-                for(int c=0;c<colunamax;c++){
-                    if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
-                        printf("\t");
-                    }
-                    else{
-                        matrizaux[l][c]=(matriz[l-2][c-2]*0)+(matriz[l-2][c-1]*0)+(matriz[l-2][c]*0)+(matriz[l-2][c+1]*0)+(matriz[l-2][c+2]*0)+(matriz[l-1][c-2]*0)+(matriz[l-1][c-1]*1)+(matriz[l-1][c]*1)+(matriz[l-1][c+1]*1)+(matriz[l-1][c+2]*0)+(matriz[l][c-2]*0)+(matriz[l][c+1]*1)+(matriz[l][c]*1)+(matriz[l][c+1]*1)+(matriz[l][c+2]*0)+(matriz[l+1][c-2]*0)+(matriz[l+1][c-1]*1)+(matriz[l+1][c]*1)+(matriz[l+1][c+1]*1)+(matriz[l+1][c+2]*0)+(matriz[l+2][c-2]*0)+(matriz[l+2][c-1]*0)+(matriz[l+2][c]*0)+(matriz[l+2][c+1]*0)+(matriz[l+2][c+2]*0);
-                        printf("%i\t", matrizaux[l][c]);
-                    }
-                }
-            printf("\n");
-            }
+            KernelCaso7(linhamax, colunamax, matriz, matrizaux);
             break;
         case 0:
             finalizarPrograma();
