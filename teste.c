@@ -245,7 +245,7 @@ void KernelCaso7(int linhamax, int colunamax, int **matriz, int **matrizaux){
 }
 
 void DesalocaMatrizeMatrizaux(int **matriz, int **matrizaux){
-    printf("Desalocando memoria");
+    printf("Desalocando memoria\n");
     free(matriz);
     free(matrizaux);
     printf("PROGRAMA FINALIZADO\n");
