@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define TAM 256
 
 typedef struct{
     int linha;
@@ -95,13 +96,13 @@ int EscolhaKernel(){
 void EscolhaValoresDentroMatriz(int linhamax, int colunamax, int **matriz){
     for(int l=0;l<linhamax;l++){
         for(int c=0;c<colunamax;c++){
-            printf("Digite os valores para matriz[%i][%i]\n", l, c);
-            scanf("%i", &matriz[l][c]);
+            matriz[l][c]=rand()%TAM;
         }
     }
 }
 
 void EscreverValoresDentroMatriz(int linhamax, int colunamax, int **matriz){
+    printf("MATRIZ:\n");
     for(int l=0;l<linhamax;l++){
         for(int c=0;c<colunamax;c++){
             printf("%i\t", matriz[l][c]);
