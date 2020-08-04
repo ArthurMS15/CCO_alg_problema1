@@ -56,7 +56,7 @@ Para finalizar então é retornado à função *int main* onde será realizada a
 
 # Referências
 
-CASTRO, Wellington. *DIP03 – Matriz de convolução e detecção de bordas.* Disponível em: <https://capivararex.wordpress.com/2016/04/25/dip03-matriz-de-convolucao-e-deteccao-de-bordas/>. Acesso em: 18 jul. 2020.
+CASTRO, Wellington. **DIP03 – Matriz de convolução e detecção de bordas.** Disponível em: <https://capivararex.wordpress.com/2016/04/25/dip03-matriz-de-convolucao-e-deteccao-de-bordas/>. Acesso em: 18 jul. 2020.
 
 DOCS.GIMP. **Matriz de convolução.** Disponível em: <https://docs.gimp.org/2.8/pt_BR/plug-in-convmatrix.html>. Acesso em: 18 jul. 2020.
 
