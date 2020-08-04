@@ -20,3 +20,21 @@ do j = 1,n
 end do
 
 Exemplo de Aplicação prática: convolução 2D onde uma máscara de convolução (ou kernel) é aplicado sobre uma imagem para gerar uma imagem filtrada
+
+
+# Resumo da Programação (retirado do relatório)
+
+Assim como o problema já demonstra pelas imagens e textos disponibilizados, foi decidido começar por uma listagem de aspectos obrigatórios
+para o algoritmo: 
+1. Não houve uso de variável global; 
+2. Estruturas de repetição;
+3. Modularização (mín.: 1 módulo de procedimento e 2 de ação); 
+4. Passagem de parâmetro por valor e referência; 
+5. Registros; 
+6. Alocação dinâmica de memória
+7. Matrizes dinâmicas (ponteiros).
+
+Antes de compreender o código em si é preciso ter a concepção de dois termos para a resolução do problema, que é convolução e kernel. 
+Respectivamente o processo de convolução discreta, como é conhecido, envolve o processamento de imagens. A imagem original será interpretada pelo computador através de uma matriz com diferentes números, e essa matriz entrará em contato com outra matriz com valores já determinados chamada de “núcleo” ou “kernel”. Esse contato entre elas é representado através de uma função (que será abordada posteriormente), gerando então uma terceira matriz feita pelo contato entre a matriz original e a de kernel.
+
+
