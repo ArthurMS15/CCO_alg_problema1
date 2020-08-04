@@ -251,11 +251,8 @@ void DesalocaMatrizeMatrizaux(int **matriz, int **matrizaux){
     printf("Desalocando memoria\n");
     free(matriz);
     free(matrizaux);
-    printf("PROGRAMA FINALIZADO\n");
-    return 0;
 }
 
 void FinalizarPrograma(){
     printf("PROGRAMA FINALIZADO\n");
-    return 0;
 }
