@@ -60,9 +60,9 @@ REFERÊNCIAS
 
 CASTRO, Wellington. *DIP03 – Matriz de convolução e detecção de bordas.* Disponível em: <https://capivararex.wordpress.com/2016/04/25/dip03-matriz-de-convolucao-e-deteccao-de-bordas/>. Acesso em: 18 jul. 2020.
 
-DOCS.GIMP. *Matriz de convolução.* Disponível em: <https://docs.gimp.org/2.8/pt_BR/plug-in-convmatrix.html>. Acesso em: 18 jul. 2020.
+DOCS.GIMP. **Matriz de convolução.** Disponível em: <https://docs.gimp.org/2.8/pt_BR/plug-in-convmatrix.html>. Acesso em: 18 jul. 2020.
 
-ELO7. *Princípios de Processamento de Imagens: Uma introdução à Convolução.* Disponível em: <https://elo7.dev/convolucao/>. Acesso em: 18 jul. 2020.
+ELO7. **Princípios de Processamento de Imagens: Uma introdução à Convolução.** Disponível em: <https://elo7.dev/convolucao/>. Acesso em: 18 jul. 2020.
 
-UFPR. *Exame Final de Algoritmos e Estruturas de Dados I.* Disponível em: <http://www.inf.ufpr.br/cursos/ci055/Provas_antigas/final-20181.pdf>. Acesso em: 18 jul. 2020.
+UFPR. **Exame Final de Algoritmos e Estruturas de Dados I.** Disponível em: <http://www.inf.ufpr.br/cursos/ci055/Provas_antigas/final-20181.pdf>. Acesso em: 18 jul. 2020.
 
