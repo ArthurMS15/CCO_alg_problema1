@@ -12,7 +12,7 @@ O contato entre elas é representado através de uma função, gerando então um
 
 ## Construção do algoritmo e resultados:
 
-No início do código, contém as bibliotecas: *<stdio.h>* e *<stdlib.h>*, possibilitando o funcionamento do mesmo.
+No início do código, contém as bibliotecas: *<stdio.h>* e *<stdlib.h>*, possibilitando o funcionamento do mesmo, além da declaração das constantes *TAM*, sendo a quantidade de numeros que podem ter dentro da matriz, e *LINHA* e *COLUNA* representando as dimensões da matriz original.
 Em seguida é feita a declaração do registro, que conterá as informações das dimensões (linha e coluna) da matriz (gerada aleatoriamente entre 0 e 15).             
 Depois há a prototipação, sendo toda a modularização feita no algoritmo (havendo a passagem de parâmetro por valor e referência).
 
