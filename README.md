@@ -1,5 +1,5 @@
 # Resumo da Programação (retirado do relatório)
-## Tarefas realizadas:
+## Tarefas iniciais realizadas:
 
 Assim como o problema demonstra pelas imagens e textos, foi decidido começar pela listagem de aspectos obrigatórios para o algoritmo disponibilizados pelo orientador: Não houve uso de variável global; estruturas de repetição; modularização (mín.: 1 módulo de procedimento e 2 de ação); passagem de parâmetro por valor e referência; registros; alocação dinâmica de memória e matrizes dinâmicas (ponteiros).
 
