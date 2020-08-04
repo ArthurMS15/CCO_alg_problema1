@@ -54,9 +54,7 @@ Seguindo com o algoritmo, o resultado no final é visto da seguinte forma:
 No resultado, todos os valores na borda da matriz são ignorados e são apenas mostrados os que não se encontram consequentemente na primeira ou última linha e na primeira e última coluna.
 Para finalizar então é retornado à função *int main* onde será realizada a desalocação da memória com a função *void DesalocaMatrizeMatrizaux*, desalocando então as informações que haviam sido armazenadas em "int** matriz" e “int** matrizaux".
 
-# Refrerências
-
-REFERÊNCIAS
+# Referências
 
 CASTRO, Wellington. *DIP03 – Matriz de convolução e detecção de bordas.* Disponível em: <https://capivararex.wordpress.com/2016/04/25/dip03-matriz-de-convolucao-e-deteccao-de-bordas/>. Acesso em: 18 jul. 2020.
 
