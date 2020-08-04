@@ -25,7 +25,7 @@ O motivo da existência de duas matrizes, se deve que a função que gera a nova
 
 Posteriormente, encontra-se os módulos *void EscolhaValoresDentroMatriz* e *void EscreverValoresDentroMatriz*, onde o primeiro indica os valores inteiros gerados aleatoriamente entre 0 e 255 (código de cores RGB, mas sem ter 3 valores em cada coordenada) dentro da matriz, baseada também nas dimensões que ele havia escolhido anteriormente, já o outro módulo mostrará a matriz completa.
 
-O próximo módulo na função *int main* é *void ProcessoConvolucaoEscolhaKernel*. Nele será encontrado outras funções, como no caso: *int EscolhaKernel*, onde dependendo do número escolhido, leva para um filtro diferente que modifica a matriz, variando entre 7 filtros (*KernelCaso1*, *KernelCaso2* e etc), além de posteriormente com a alteração dos valores, será escrito a nova matriz formada através da original e do filtro escolhido. Por último há uma outra função *void FinalizarPrograma*. Por conta de cada um dos casos apresentarem um filtro diferente, a função de como esses valores são calculados se encontram justamente em cada um dos casos.
+O próximo módulo na função *int main* é *void ProcessoConvolucaoEscolhaKernel*. Nele será encontrado outras funções, como no caso: *int EscolhaKernel*, onde dependendo do número escolhido, leva para um filtro diferente que modifica a matriz, variando entre 6 filtros (*KernelCaso1*, *KernelCaso2* e etc), além de posteriormente com a alteração dos valores, será escrito a nova matriz formada através da original e do filtro escolhido. Por último há uma outra função *void FinalizarPrograma*. Por conta de cada um dos casos apresentarem um filtro diferente, a função de como esses valores são calculados se encontram justamente em cada um dos casos.
 
 **Figura 2 – Parte do código exemplificando os dois parágrafos anteriores.**
 ![algoritmo](https://github.com/ArthurMS15/CCO_alg_problema1/blob/master/algoritmo.png)                                                                                         
@@ -56,7 +56,7 @@ Para finalizar então é retornado à função *int main* onde será realizada a
 
 # Referências
 
-CASTRO, Wellington. *DIP03 – Matriz de convolução e detecção de bordas.* Disponível em: <https://capivararex.wordpress.com/2016/04/25/dip03-matriz-de-convolucao-e-deteccao-de-bordas/>. Acesso em: 18 jul. 2020.
+CASTRO, Wellington. **DIP03 – Matriz de convolução e detecção de bordas.** Disponível em: <https://capivararex.wordpress.com/2016/04/25/dip03-matriz-de-convolucao-e-deteccao-de-bordas/>. Acesso em: 18 jul. 2020.
 
 DOCS.GIMP. **Matriz de convolução.** Disponível em: <https://docs.gimp.org/2.8/pt_BR/plug-in-convmatrix.html>. Acesso em: 18 jul. 2020.
 
