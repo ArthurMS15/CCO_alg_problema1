@@ -1,7 +1,7 @@
 # Resumo da Programação (retirado do relatório)
 ## Tarefas iniciais realizadas:
 
-Assim como o problema demonstra pelas imagens e textos, foi decidido começar pela listagem de aspectos obrigatórios para o algoritmo disponibilizados pelo orientador: Não houve uso de variável global; estruturas de repetição; modularização (mín.: 1 módulo de procedimento e 2 de ação); passagem de parâmetro por valor e referência; registros; alocação dinâmica de memória e matrizes dinâmicas (ponteiros).
+Assim como o problema demonstra pelas imagens e textos disponibilizados pelo professor, foi decidido começar pela listagem de aspectos obrigatórios para o algoritmo disponibilizados pelo orientador: Não houve uso de variável global; estruturas de repetição; modularização (mín.: 1 módulo de procedimento e 2 de ação); passagem de parâmetro por valor e referência; registros; alocação dinâmica de memória e matrizes dinâmicas (ponteiros).
 
 Para o código é preciso ter a concepção do processo de convolução discreta, que envolve o processamento de imagens. A imagem original será interpretada pelo computador através de uma matriz com diferentes números, e essa matriz entrará em contato com outra matriz com valores já determinados chamada de “núcleo” ou “kernel”.                               
 O contato entre elas é representado através de uma função, gerando então uma outra matriz filtrada feita pelo contato entre a matriz original e a de Kernel.
