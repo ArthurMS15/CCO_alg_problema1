@@ -27,7 +27,7 @@ Posteriormente, encontra-se os módulos *void EscolhaValoresDentroMatriz* e *voi
 
 O próximo módulo na função *int main* é *void ProcessoConvolucaoEscolhaKernel*. Nele será encontrado outras funções, como no caso: *int EscolhaKernel*, onde dependendo do número escolhido, leva para um filtro diferente que modifica a matriz, variando entre 6 filtros (*KernelCaso1*, *KernelCaso2* e etc), além de posteriormente com a alteração dos valores, será escrito a nova matriz formada através da original e do filtro escolhido. Por último há uma outra função *void FinalizarPrograma*. Por conta de cada um dos casos apresentarem um filtro diferente, a função de como esses valores são calculados muda em cada um dos casos.
 
-**Figura 2 – Parte do código exemplificando os dois parágrafos anteriores.**
+**Figura 2 – Parte do código exemplificando o parágrafo anterior.**
 ![algoritmo](https://github.com/ArthurMS15/CCO_alg_problema1/blob/master/algoritmo.png)                                                                                         
 **Fonte: O Autor (2020).**
 
