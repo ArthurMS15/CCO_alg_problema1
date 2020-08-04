@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define TAM 256
+#define LINHA 16
+#define COLUNA 16
 
 typedef struct{
     int linha;
@@ -43,14 +45,14 @@ int main(){
 }
 
 int EscolhaLinhaMax(sDimensaoMatriz matriz1){
-    printf("(n inteiro) Insira a dimensao y (linha) da matriz que passara pela convolucao:\n");
-    scanf("%i", &matriz1.linha);
+    printf("(Linha) numero aleatorio sendo gerado...\n");
+    matriz1.linha=rand()%LINHA;
     return matriz1.linha;
 }
 
 int EscolhaColunaMax(sDimensaoMatriz matriz1){
-    printf("(n inteiro) Insira a dimensao x (coluna) da matriz que passara pela convolucao:\n");
-    scanf("%i", &matriz1.coluna);
+    printf("(Coluna) numero aleatorio sendo gerado...\n");
+    matriz1.coluna=rand()%COLUNA;
     return matriz1.coluna;
 }
 
