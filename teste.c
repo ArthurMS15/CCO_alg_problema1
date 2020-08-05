@@ -32,7 +32,7 @@ int main(){
     int linhamax=EscolhaLinhaMax(matriz1); // *uso do registro
     int colunamax=EscolhaColunaMax(matriz1);
 
-    int **matriz; // *uso de registro dentro de um registro
+    int **matriz; // *uso de ponteiro dentro de um ponteiro
     matriz=CriarMatriz(linhamax, colunamax); //alocação dinâmica de memória
     int **matrizaux; 
     matrizaux=CriarMatrizAuxiliar(linhamax, colunamax); 
