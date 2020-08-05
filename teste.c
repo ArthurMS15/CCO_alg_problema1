@@ -32,7 +32,7 @@ int main(){
     int linhamax=EscolhaLinhaMax(matriz1); // *uso do registro
     int colunamax=EscolhaColunaMax(matriz1);
 
-    int **matriz; // *uso de registro dentro de um registro
+    int **matriz; // *uso de ponteiro dentro de outro ponteiro
     matriz=CriarMatriz(linhamax, colunamax); //alocação dinâmica de memória
     int **matrizaux; 
     matrizaux=CriarMatrizAuxiliar(linhamax, colunamax); 
@@ -116,7 +116,7 @@ void EscreverValoresDentroMatriz(int linhamax, int colunamax, int **matriz){
 void ProcessoConvolucaoeEscolhaKernel(int linhamax, int colunamax, int **matriz, int **matrizaux){
     switch(EscolhaKernel()){
         case 1:
-            KernelCaso1(linhamax, colunamax, matriz, matrizaux); // *passagem de parâmetro por valor e referência, elementos do registro
+            KernelCaso1(linhamax, colunamax, matriz, matrizaux); // *passagem de parâmetro por valor e referência, elementos do ponteiro
             break;
         case 2:
             KernelCaso2(linhamax, colunamax, matriz, matrizaux);
