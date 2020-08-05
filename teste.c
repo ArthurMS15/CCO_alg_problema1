@@ -135,9 +135,11 @@ void kernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux){
                        {0,0,0}};
     for(int l=0;l<linhamax;l++){
         for(int c=0;c<colunamax;c++){
-            for(int lk=0;lk<3;lk++){
-                for(int ck=0;ck<3;ck++){
-                    matrizaux[l][c]=(matriz[l][c]*kernel[lk][ck]);
+            if(l != 0 && c != 0 && l != linhamax-1 && c != colunamax-1){
+                for(int lk=0; lk<3; lk++){
+                    for(int ck=0; ck<3; ck++){
+                        matrizaux[l][c]=(matriz[l][c]*kernel[lk][ck]);
+                    }
                 }
             }
         }
