@@ -12,12 +12,11 @@ typedef struct{
 int EscolhaLinhaMax(sDimensaoMatriz matriz1);
 int EscolhaColunaMax(sDimensaoMatriz matriz1);
 int** CriarMatriz(int linhamax, int colunamax);
-int** CriarMatrizAuxiliar(int linhamax, int colunamax);
 int EscolhaKernel();
 void EscolhaValoresDentroMatriz(int linhamax, int colunamax, int **matriz);
 void EscreverValoresDentroMatriz(int linhamax, int colunamax, int **matriz);
 void ProcessoConvolucaoeEscolhaKernel(int linhamax, int colunamax, int **matriz, int **matrizaux);
-void DesalocaMatrizeMatrizaux(int **matriz, int **matrizaux);
+void DesalocaMatrizeMatrizaux(int linhamax, int colunamax, int **matriz, int **matrizaux);
 void KernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux);
 void KernelCaso2(int linhamax, int colunamax, int **matriz, int **matrizaux);
 void KernelCaso3(int linhamax, int colunamax, int **matriz, int **matrizaux);
@@ -35,13 +34,13 @@ int main(){
     int **matriz; // *uso de ponteiro dentro de outro ponteiro
     matriz=CriarMatriz(linhamax, colunamax); //alocação dinâmica de memória
     int **matrizaux; 
-    matrizaux=CriarMatrizAuxiliar(linhamax, colunamax); 
+    matrizaux=CriarMatriz(linhamax, colunamax); 
 
     EscolhaValoresDentroMatriz(linhamax, colunamax, matriz); // *passagem de parâmetro por valor e referência
     EscreverValoresDentroMatriz(linhamax, colunamax, matriz); 
     
     ProcessoConvolucaoeEscolhaKernel(linhamax, colunamax, matriz, matrizaux);
-    DesalocaMatrizeMatrizaux(matriz, matrizaux);
+    DesalocaMatrizeMatrizaux(linhamax, colunamax, matriz, matrizaux);
     return 0;
 }
 
@@ -69,7 +68,7 @@ int** CriarMatriz(int linhamax, int colunamax){
     return m;
 }
 
-int** CriarMatrizAuxiliar(int linhamax, int colunamax){
+/*int** CriarMatrizAuxiliar(int linhamax, int colunamax){
     int **maux;
     maux=(int**) malloc(linhamax * sizeof(sizeof(int *)));
     for(int l=0; l<linhamax;l++){
@@ -79,7 +78,7 @@ int** CriarMatrizAuxiliar(int linhamax, int colunamax){
         printf("Erro ao alocar memoria!\n");
     }
     return maux;
-}
+}*/
 
 int EscolhaKernel(){
     int var;
@@ -229,9 +228,17 @@ void KernelCaso6(int linhamax, int colunamax, int **matriz, int **matrizaux){
     }
 }
 
-void DesalocaMatrizeMatrizaux(int **matriz, int **matrizaux){
+void DesalocaMatrizeMatrizaux(int linhamax, int colunamax, int **matriz, int **matrizaux){
     printf("Desalocando memoria\n");
+
+    for(int l=0; l<linhamax;l++){
+        free(matriz[l]);
+    }
     free(matriz);
+
+    for(int l=0; l<linhamax;l++){
+        free(matrizaux[l]);
+    }
     free(matrizaux);
 }
 
