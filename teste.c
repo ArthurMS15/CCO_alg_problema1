@@ -129,7 +129,6 @@ void processoConvolucaoeEscolhaKernel(int linhamax, int colunamax, int **matriz,
 }
 
 void kernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux){
-    int **auxiliar=criarMatriz(linhamax, colunamax);
     int kernel[3][3]={{0,0,0},
                        {-1,1,0},
                        {0,0,0}};
@@ -139,15 +138,10 @@ void kernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux){
                 for(int lk=0; lk<3; lk++){
                     for(int ck=0; ck<3; ck++){
                         matrizaux[l][c]=(matriz[l][c]*kernel[lk][ck]);
+                        matrizaux[l][c]=matrizaux[l][c]+matrizaux[l][c];
                     }
                 }
             }
-        }
-    }
-    for(int l=0;l<linhamax;l++){
-        for(int c=0;c<colunamax;c++){
-            matrizaux[l][c]=matrizaux[l][c]+auxiliar[l][c];
-            auxiliar[l][c]=matrizaux[l][c];
         }
     }
     escrevaMatrizAuxiliar(linhamax, colunamax, matrizaux);
