@@ -1,4 +1,4 @@
-# Resumo da Programação (retirado do relatório)
+# Resumo da Programação - Relatório
 ## Metodologia e tarefas iniciais realizadas:
 
 Este relatório estará apresentando diferentes conceitos atrelados a linguagem de programação em C utilizando o ambiente de desenvolvimento integrado (IDE): Visual Studio Code, para toda a programação. Será analisado os motivos e resultados da conclusão que foi determinada a partir da programação feita para o problema. Explicando a lógica e ferramentas para a construção do algoritmo.
