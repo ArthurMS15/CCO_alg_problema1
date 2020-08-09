@@ -16,7 +16,7 @@ int escolhaKernel();
 void escolhaValoresDentroMatriz(int linhamax, int colunamax, int **matriz);
 void escreverValoresDentroMatriz(int linhamax, int colunamax, int **matriz);
 void processoConvolucaoeEscolhaKernel(int linhamax, int colunamax, int **matriz, int **matrizaux);
-void desalocaMatrizeMatrizaux(int linhamax, int colunamax, int **matriz, int **matrizaux);
+void desalocaMatrizeMatrizaux(int linhamax, int **matriz, int **matrizaux);
 void kernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux);
 void kernelCaso2(int linhamax, int colunamax, int **matriz, int **matrizaux);
 void kernelCaso3(int linhamax, int colunamax, int **matriz, int **matrizaux);
@@ -41,7 +41,7 @@ int main(){
     escreverValoresDentroMatriz(linhamax, colunamax, matriz); 
     
     processoConvolucaoeEscolhaKernel(linhamax, colunamax, matriz, matrizaux);
-    desalocaMatrizeMatrizaux(linhamax, colunamax, matriz, matrizaux);
+    desalocaMatrizeMatrizaux(linhamax, matriz, matrizaux);
     return 0;
 }
 
@@ -195,7 +195,7 @@ void escrevaMatrizAuxiliar(int linhamax, int colunamax, int **matrizaux){
     }
 }
 
-void desalocaMatrizeMatrizaux(int linhamax, int colunamax, int **matriz, int **matrizaux){
+void desalocaMatrizeMatrizaux(int linhamax, int **matriz, int **matrizaux){
     printf("Desalocando memoria\n");
 
     for(int l=0; l<linhamax;l++){
