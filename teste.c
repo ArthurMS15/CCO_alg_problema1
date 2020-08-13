@@ -13,17 +13,15 @@ int escolhaLinhaMax(sDimensaoMatriz matriz1);
 int escolhaColunaMax(sDimensaoMatriz matriz1);
 int** criarMatriz(int linhamax, int colunamax);
 int escolhaKernel();
+int** criarMatrizKernel();
 void escolhaValoresDentroMatriz(int linhamax, int colunamax, int **matriz);
 void escreverValoresDentroMatriz(int linhamax, int colunamax, int **matriz);
-void processoConvolucaoeEscolhaKernel(int linhamax, int colunamax, int **matriz, int **matrizaux);
-void desalocaMatrizeMatrizaux(int linhamax, int **matriz, int **matrizaux);
-void kernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux);
-void kernelCaso2(int linhamax, int colunamax, int **matriz, int **matrizaux);
-void kernelCaso3(int linhamax, int colunamax, int **matriz, int **matrizaux);
-void kernelCaso4(int linhamax, int colunamax, int **matriz, int **matrizaux);
-void kernelCaso5(int linhamax, int colunamax, int **matriz, int **matrizaux);
-void kernelCaso6(int linhamax, int colunamax, int **matriz, int **matrizaux);
-void escrevaMatrizAuxiliar(int linhamax, int colunamax, int **matrizaux);
+void escolhaValoresDentroKernel(int **kernel);
+void escreverValoresDentroKernel(int **kernel);
+void processoConvolucaoeEscolhaKernel(int linhamax, int colunamax, int **matriz, int **matrizaux, int **kernel);
+void escreverValoresMatrizAux(int linhamax, int colunamax, int **matrizaux);
+void desalocaMatrizeMatrizaux(int linhamax, int **matriz, int **matrizaux, int **kernel);
+void kernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux, int **kernel);
 void finalizarPrograma(); // *modularização(procedimento e de ação), prototipação
 
 int main(){
@@ -35,13 +33,18 @@ int main(){
     int **matriz; // *uso de ponteiro dentro de outro ponteiro
     matriz=criarMatriz(linhamax, colunamax); //alocação dinâmica de memória
     int **matrizaux; 
-    matrizaux=criarMatriz(linhamax, colunamax); 
+    matrizaux=criarMatriz(linhamax, colunamax);
+    int **kernel;
+    kernel=criarMatrizKernel(); 
 
     escolhaValoresDentroMatriz(linhamax, colunamax, matriz); // *passagem de parâmetro por valor e referência
-    escreverValoresDentroMatriz(linhamax, colunamax, matriz); 
+    escreverValoresDentroMatriz(linhamax, colunamax, matriz);
+
+    escolhaValoresDentroKernel(kernel);
+    escreverValoresDentroKernel(kernel); 
     
-    processoConvolucaoeEscolhaKernel(linhamax, colunamax, matriz, matrizaux);
-    desalocaMatrizeMatrizaux(linhamax, matriz, matrizaux);
+    processoConvolucaoeEscolhaKernel(linhamax, colunamax, matriz, matrizaux, kernel);
+    desalocaMatrizeMatrizaux(linhamax, matriz, matrizaux, kernel);
     return 0;
 }
 
@@ -69,15 +72,22 @@ int** criarMatriz(int linhamax, int colunamax){
     return m;
 }
 
+int** criarMatrizKernel(){
+    int **m;
+    m=(int**) malloc(3 * sizeof(sizeof(int *)));
+    for(int l=0; l<3;l++){
+        m[l]=(int*)malloc(3 * sizeof(int));
+    }
+    if (m == NULL){
+        printf("Erro ao alocar memoria!\n");
+    }
+    return m;
+}
+
 int escolhaKernel(){
     int var;
     printf("\nMatrizes para a convolucao:\n");
     printf("1 - realcar bordas (3x3):\n");
-    printf("2 - detectar bordas (3x3):\n");
-    printf("3 - outra forma de detectar bordas (3x3):\n");
-    printf("4 - destacar relevo (3x3):\n");
-    printf("5 - destacar objetos (3x3):\n");
-    printf("6 - exemplo do trabalho (3x3):\n");
     printf("0 - para finalizar o programa\n");
     scanf("%i", &var);
     return var;
@@ -101,25 +111,10 @@ void escreverValoresDentroMatriz(int linhamax, int colunamax, int **matriz){
     }
 }
 
-void processoConvolucaoeEscolhaKernel(int linhamax, int colunamax, int **matriz, int **matrizaux){
+void processoConvolucaoeEscolhaKernel(int linhamax, int colunamax, int **matriz, int **matrizaux, int **kernel){
     switch(escolhaKernel()){
         case 1:
-            kernelCaso1(linhamax, colunamax, matriz, matrizaux); // *passagem de parâmetro por valor e referência, elementos do ponteiro
-            break;
-        case 2:
-            kernelCaso2(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 3:
-            kernelCaso3(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 4:
-            kernelCaso4(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 5:
-            kernelCaso5(linhamax, colunamax, matriz, matrizaux);
-            break;
-        case 6:
-            kernelCaso6(linhamax, colunamax, matriz, matrizaux);
+            kernelCaso1(linhamax, colunamax, matriz, matrizaux, kernel); // *passagem de parâmetro por valor e referência, elementos do ponteiro
             break;
         case 0:
             finalizarPrograma();
@@ -127,61 +122,40 @@ void processoConvolucaoeEscolhaKernel(int linhamax, int colunamax, int **matriz,
     }
 }
 
-void kernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux){
-    for(int l=0;l<linhamax;l++){
-        for(int c=0;c<colunamax;c++){
-            matrizaux[l][c]=((matriz[l-1][c-1]*0)+(matriz[l-1][c]*0)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*-1)+(matriz[l][c]*1)+(matriz[l][c+1]*0)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*0)+(matriz[l+1][c+1]*0));
+void escolhaValoresDentroKernel(int **kernel){
+    for(int l=0;l<3;l++){
+        for(int c=0;c<3;c++){
+            kernel[l][c]=rand()%2;
         }
     }
-    escrevaMatrizAuxiliar(linhamax, colunamax, matrizaux);
 }
 
-void kernelCaso2(int linhamax, int colunamax, int **matriz, int **matrizaux){ 
+void escreverValoresDentroKernel(int **kernel){
+    printf("KERNEL:\n");
+    for(int l=0;l<3;l++){
+        for(int c=0;c<3;c++){
+            printf("%i\t", kernel[l][c]);
+        }
+        printf("\n");
+    }
+}
+
+void kernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux, int **kernel){
     for(int l=0;l<linhamax;l++){
         for(int c=0;c<colunamax;c++){
-            matrizaux[l][c]=((matriz[l-1][c-1]*0)+(matriz[l-1][c]*1)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*1)+(matriz[l][c]*-4)+(matriz[l][c+1]*1)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*1)+(matriz[l+1][c+1]*0));
+            if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
+                matrizaux[l][c]=matrizaux[l][c];
+            }
+            else{
+                matrizaux[l][c]=(matriz[l-1][c-1]*kernel[0][0])+(matriz[l-1][c]*kernel[0][1])+(matriz[l-1][c+1]*kernel[0][2])+(matriz[l][c-1]*kernel[1][0])+(matriz[l][c]*kernel[1][1])+(matriz[l][c+1]*kernel[1][2])+(matriz[l+1][c-1]*kernel[2][0])+(matriz[l+1][c]*kernel[2][1])+(matriz[l+1][c+1]*kernel[2][2]);
+            }
         }
     }
-    escrevaMatrizAuxiliar(linhamax, colunamax, matrizaux);
+    escreverValoresMatrizAux(linhamax, colunamax, matrizaux);
 }
 
-void kernelCaso3(int linhamax, int colunamax, int **matriz, int **matrizaux){
-    for(int l=0;l<linhamax;l++){
-        for(int c=0;c<colunamax;c++){
-            matrizaux[l][c]=((matriz[l-1][c-1]*-1)+(matriz[l-1][c]*-1)+(matriz[l-1][c+1]*-1)+(matriz[l][c-1]*-1)+(matriz[l][c]*8)+(matriz[l][c+1]*-1)+(matriz[l+1][c-1]*-1)+(matriz[l+1][c]*-1)+(matriz[l+1][c+1]*-1));
-        }
-    }
-    escrevaMatrizAuxiliar(linhamax, colunamax, matrizaux);
-}
-
-void kernelCaso4(int linhamax, int colunamax, int **matriz, int **matrizaux){
-    for(int l=0;l<linhamax;l++){
-        for(int c=0;c<colunamax;c++){
-            matrizaux[l][c]=((matriz[l-1][c-1]*-2)+(matriz[l-1][c]*-1)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*-1)+(matriz[l][c]*1)+(matriz[l][c+1]*1)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*1)+(matriz[l+1][c+1]*2));
-        }
-    }
-    escrevaMatrizAuxiliar(linhamax, colunamax, matrizaux);
-}
-
-void kernelCaso5(int linhamax, int colunamax, int **matriz, int **matrizaux){
-    for(int l=0;l<linhamax;l++){
-        for(int c=0;c<colunamax;c++){
-            matrizaux[l][c]=(matriz[l-1][c-1]*-1)+(matriz[l-1][c]*0)+(matriz[l-1][c+1]*0)+(matriz[l][c-1]*1)+(matriz[l][c]*0)+(matriz[l][c+1]*0)+(matriz[l+1][c-1]*0)+(matriz[l+1][c]*0)+(matriz[l+1][c+1]*0);
-        }
-    }
-    escrevaMatrizAuxiliar(linhamax, colunamax, matrizaux);
-}
-
-void kernelCaso6(int linhamax, int colunamax, int **matriz, int **matrizaux){
-    for(int l=0;l<linhamax;l++){
-        for(int c=0;c<colunamax;c++){
-            matrizaux[l][c]=(matriz[l-1][c-1]*-1)+(matriz[l-1][c]*0)+(matriz[l-1][c+1]*1)+(matriz[l][c-1]*-2)+(matriz[l][c]*0)+(matriz[l][c+1]*2)+(matriz[l+1][c-1]*-1)+(matriz[l+1][c]*0)+(matriz[l+1][c+1]*1);   
-        }
-    }
-    escrevaMatrizAuxiliar(linhamax, colunamax, matrizaux);
-}
-
-void escrevaMatrizAuxiliar(int linhamax, int colunamax, int **matrizaux){
+void escreverValoresMatrizAux(int linhamax, int colunamax, int **matrizaux){
+    printf("MATRIZ FILTRADA:\n");
     for(int l=0;l<linhamax;l++){
         for(int c=0;c<colunamax;c++){
             if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
@@ -195,14 +169,20 @@ void escrevaMatrizAuxiliar(int linhamax, int colunamax, int **matrizaux){
     }
 }
 
-void desalocaMatrizeMatrizaux(int linhamax, int **matriz, int **matrizaux){
-    printf("Desalocando memoria\n");
-
+void desalocaMatrizeMatrizaux(int linhamax, int **matriz, int **matrizaux, int **kernel){
+    printf("Desalocando memoria: matriz original...\n");
     for(int l=0; l<linhamax;l++){
         free(matriz[l]);
     }
     free(matriz);
 
+    printf("Desalocando memoria: matriz kernel...\n");
+    for(int l=0; l<3;l++){
+        free(kernel[l]);
+    }
+    free(kernel);
+
+    printf("Desalocando memoria: matriz auxiliar...\n");
     for(int l=0; l<linhamax;l++){
         free(matrizaux[l]);
     }
