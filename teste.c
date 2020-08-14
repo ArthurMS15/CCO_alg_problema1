@@ -22,6 +22,7 @@ void processoConvolucaoeEscolhaKernel(int linhamax, int colunamax, int **matriz,
 void escreverValoresMatrizAux(int linhamax, int colunamax, int **matrizaux);
 void desalocaMatrizeMatrizaux(int linhamax, int **matriz, int **matrizaux, int **kernel);
 void kernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux, int **kernel);
+int convolucaoCaso1(int l, int c, int **matriz, int **kernel);
 void finalizarPrograma(); // *modularização(procedimento e de ação), prototipação
 
 int main(){
@@ -141,17 +142,35 @@ void escreverValoresDentroKernel(int **kernel){
 }
 
 void kernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux, int **kernel){
-    for(int l=0;l<linhamax;l++){
-        for(int c=0;c<colunamax;c++){
+    for(int l=0;l<linhamax; l++){
+        for(int c=0;c<colunamax; c++){
             if(l==0 || c==0 || l==linhamax-1 || c==colunamax-1){
                 matrizaux[l][c]=matrizaux[l][c];
             }
             else{
-                matrizaux[l][c]=(matriz[l-1][c-1]*kernel[0][0])+(matriz[l-1][c]*kernel[0][1])+(matriz[l-1][c+1]*kernel[0][2])+(matriz[l][c-1]*kernel[1][0])+(matriz[l][c]*kernel[1][1])+(matriz[l][c+1]*kernel[1][2])+(matriz[l+1][c-1]*kernel[2][0])+(matriz[l+1][c]*kernel[2][1])+(matriz[l+1][c+1]*kernel[2][2]);
+                matrizaux[l][c]=convolucaoCaso1(l, c, matriz, kernel);
             }
-        }
+        }  
     }
     escreverValoresMatrizAux(linhamax, colunamax, matrizaux);
+}
+
+int convolucaoCaso1(int l, int c, int **matriz, int **kernel){
+    int matrizaux=0;
+    int auxmatrizaux=0;
+    int aux=c;
+    l--; 
+    c--;
+    for(int lk=0; lk < 3; lk++){
+        for(int ck = 0; ck < 3; ck++){
+            matrizaux = matriz[l][c] * kernel[lk][ck];
+            auxmatrizaux=auxmatrizaux+matrizaux;
+            c++;
+        }
+        c=aux;
+        l++;
+    }
+    return auxmatrizaux;
 }
 
 void escreverValoresMatrizAux(int linhamax, int colunamax, int **matrizaux){
