@@ -161,8 +161,8 @@ int convolucaoCaso1(int l, int c, int **matriz, int **kernel){
     int aux=c;
     l--; 
     c--;
-    for(int lk=0; lk < 3; lk++){
-        for(int ck = 0; ck < 3; ck++){
+    for(int lk=0;lk<3;lk++){
+        for(int ck=0;ck<3;ck++){
             matrizaux = matriz[l][c] * kernel[lk][ck];
             auxmatrizaux=auxmatrizaux+matrizaux;
             c++;
