@@ -91,7 +91,7 @@ int** criarMatrizKernel(){
 int escolhaKernel(){
     int var;
     printf("\nMatrizes para a convolucao:\n");
-    printf("1 - realcar bordas (3x3):\n");
+    printf("1 - realizar modularizacao (3x3):\n");
     printf("0 - para finalizar o programa\n");
     scanf("%i", &var);
     return var;
