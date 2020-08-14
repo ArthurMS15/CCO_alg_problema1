@@ -26,17 +26,19 @@ int convolucaoCaso1(int l, int c, int **matriz, int **kernel);
 void finalizarPrograma(); // *modularização(procedimento e de ação), prototipação
 
 int main(){
-
     sDimensaoMatriz matriz1;
+
     int linhamax=escolhaLinhaMax(matriz1); // *uso do registro
     int colunamax=escolhaColunaMax(matriz1);
 
     int **matriz; // *uso de ponteiro dentro de outro ponteiro
     matriz=criarMatriz(linhamax, colunamax); //alocação dinâmica de memória
+
     int **matrizaux; 
     matrizaux=criarMatriz(linhamax, colunamax);
+
     int **kernel;
-    kernel=criarMatrizKernel(); 
+    kernel=criarMatrizKernel();
 
     escolhaValoresDentroMatriz(linhamax, colunamax, matriz); // *passagem de parâmetro por valor e referência
     escreverValoresDentroMatriz(linhamax, colunamax, matriz);
@@ -46,6 +48,7 @@ int main(){
     
     processoConvolucaoeEscolhaKernel(linhamax, colunamax, matriz, matrizaux, kernel);
     desalocaMatrizeMatrizaux(linhamax, matriz, matrizaux, kernel);
+
     return 0;
 }
 
@@ -158,12 +161,12 @@ void kernelCaso1(int linhamax, int colunamax, int **matriz, int **matrizaux, int
 int convolucaoCaso1(int l, int c, int **matriz, int **kernel){
     int matrizaux=0;
     int auxmatrizaux=0;
-    int aux=c;
     l--; 
     c--;
+    int aux=c;
     for(int lk=0;lk<3;lk++){
         for(int ck=0;ck<3;ck++){
-            matrizaux=matriz[l][c]*kernel[lk][ck];
+            matrizaux = matriz[l][c] * kernel[lk][ck];
             auxmatrizaux=auxmatrizaux+matrizaux;
             c++;
         }
@@ -194,13 +197,11 @@ void desalocaMatrizeMatrizaux(int linhamax, int **matriz, int **matrizaux, int *
         free(matriz[l]);
     }
     free(matriz);
-
     printf("Desalocando memoria: matriz kernel...\n");
     for(int l=0; l<3;l++){
         free(kernel[l]);
     }
     free(kernel);
-
     printf("Desalocando memoria: matriz auxiliar...\n");
     for(int l=0; l<linhamax;l++){
         free(matrizaux[l]);
